@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+.wrapper div {
+  display: inline-block;
+}
+.image {
+  opacity: 1;
+  display: block;
+  height: 250px;
+  width: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  font-family: 'Mali', cursive;
+  background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(0,0,0,0.7));
+}
+
+h4 {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 8%;
+  margin-bottom: 2%;
+}
+
+.wrapper:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 6px;
+}
+.text p {
+  margin-bottom: -1%;
+}
+.text p.title {
+    font-size: 16px;
+    margin-bottom: 2%;
+}
+
+.text p.views, p.owner {
+  font-size: 12px;
+}
+.loader{
+  margin: 50px 0 50px 0;
+}
+
+.loader ul {
+  position: relative;
+  left: 50%;
+  transform: translate(0%,-50%);
+  display: flex;
+}
+.loader ul li {
+  list-style: none;
+  width: 6px;
+  height: 20px;
+  background: #262626;
+  margin: 0 4px;
+  animation: animate .7s infinite alternate;
+}
+@keyframes animate {
+  0% {
+      transform: scaleY(1);
+  }
+  25% {
+      transform: scaleY(1);
+  }
+  50% {
+      transform: scaleY(1);
+  }
+  75% {
+      transform: scaleY(1);
+  }
+  100% {
+      transform: scaleY(2);
+  }
+}
+.loader ul li:nth-child(1) {
+  animation-delay: .1s;
+}
+.loader ul li:nth-child(2) {
+  animation-delay: .2s;
+}
+.loader ul li:nth-child(3) {
+  animation-delay: .3s;
+}
+.loader ul li:nth-child(4) {
+  animation-delay: .4s;
+}
+.loader ul li:nth-child(5) {
+  animation-delay: .5s;
+}
+.loader ul li:nth-child(6) {
+  animation-delay: .6s;
+}
+.container {
+  overflow-anchor: none;
+}
+@media only screen and (max-width: 1000px) {
+  h4 {
+    margin-top: 15%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h4 {
+    margin-top: 20%;
+  }
+}
