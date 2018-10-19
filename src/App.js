@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import './App.css';
-import Explore from './Components/Explore'
-import Photo from './Components/Photo'
-import Tag from './Components/Tag'
+import DieuHuongURL from './router/DieuHuongURL';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Menu from './Components/Menu';
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
-        <Route exact path="/" component={Explore} />
-        <Route exact path="/explore" component={Explore} />
-        <Route exact path="/tags/:id" component={Tag}/>
-        <Route exact path="/photos/:id" component={Photo} />
+        <Menu></Menu>
+        <DieuHuongURL />
         </div>
       </Router>
     );

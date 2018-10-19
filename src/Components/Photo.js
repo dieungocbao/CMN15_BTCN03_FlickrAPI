@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
-import Menu from './Menu'
 import './css/photo.css'
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const api = {
     api_key: '3223e0cece13a5c1ff8ee617b609e5b4'
@@ -37,11 +36,11 @@ export default class Photo extends Component {
             })
     }
 
+
     render() {
         const { photo, person } = this.state
         return (
             <div>
-                <Menu></Menu>
                 {photo && person &&
                     <div className="white-background">
                         <div className="photo">
@@ -85,7 +84,7 @@ export default class Photo extends Component {
                                     <div className="tags">
                                         <h5>tags:</h5>
                                         {photo.tags.tag.map((tag, index) => {
-                                            return <a href={'/tags/' + tag.raw} className="btn btn-outline-info" key={index}>{tag.raw}</a>
+                                            return <Link to={'/tags/' + tag.raw} className="btn btn-outline-info" key={index}>{tag.raw}</Link>
                                         })}
                                     </div>
                                 </div>

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroller';
 import Axios from 'axios';
-import Menu from './Menu'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './css/tag.css'
+import Menu from './Menu';
+
 
 const api = {
     api_key: '3223e0cece13a5c1ff8ee617b609e5b4'
@@ -41,8 +43,21 @@ export default class Tag extends Component {
                 }
             })
     }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.id !== this.props.match.params.id) {
+            this.setState({
+                id: this.props.match.params.id,
+                images: [],
+                hasMoreItems: true,
+                pages: 1
+            })
+        }
+    }
+
     render() {
+
         const { id, images, hasMoreItems } = this.state
+
         const loader = <div className="loader" key={0}>
             <ul>
                 <li></li>
@@ -57,7 +72,7 @@ export default class Tag extends Component {
         images.map((photo, index) => {
             let src = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg'
             return (items.push(<div className="wrapper" key={index}>
-                <a href={'/photos/' + photo.id}>
+                <Link to={'/photos/' + photo.id}>
                     <img src={src} alt={photo.title} className="image img-responsive" />
                     <div className="middle">
                         <div className="text">
@@ -66,7 +81,7 @@ export default class Tag extends Component {
                             <p className="views">Views: {photo.views}</p>
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
             ))
         })

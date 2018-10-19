@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroller';
 import './css/explore.css'
-import Menu from './Menu'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const api = {
     api_key: '3223e0cece13a5c1ff8ee617b609e5b4'
 }
@@ -54,23 +54,24 @@ export default class Explore extends Component {
         var items = []
         images.map((photo, index) => {
             let src = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg'
-            return (items.push(<div className="wrapper" key={index}>
-                <a href={'/photos/'+ photo.id}>
-                    <img src={src} alt={photo.title} className="image img-responsive" />
-                    <div className="middle">
-                        <div className="text">
-                            <p className="title">{photo.title}</p>
-                            <p className="owner">by {photo.ownername}</p>
-                            <p className="views">Views: {photo.views}</p>
+            return (items.push(
+                <div className="wrapper" key={index}>
+                    <Link to={'/photos/' + photo.id}>
+                        <img src={src} alt={photo.title} className="image img-responsive" />
+                        <div className="middle">
+                            <div className="text">
+                                <p className="title">{photo.title}</p>
+                                <p className="owner">by {photo.ownername}</p>
+                                <p className="views">Views: {photo.views}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </Link>
+                </div>
+
             ))
         })
         return (
             <div>
-                <Menu></Menu>
                 <div className="container">
                     <h4 className="title">Khám phá</h4>
                     <InfiniteScroll
